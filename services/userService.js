@@ -1,8 +1,8 @@
-import bcrypt from "bcrypt";
-import userModel from "../models/userModel.js";
-import { generateToken } from "../utils/jwtToken.js";
+const bcrypt = require("bcrypt");
+const userModel = require("../models/userModel.js");
+const { generateToken } = require("../utils/jwtToken.js");
 
-export const registerUser = async ({ full_name, email, password }) => {
+const registerUser = async ({ full_name, email, password }) => {
   // check whether user already exists
   const existing_user = await userModel.findOne({ email });
 
@@ -26,7 +26,7 @@ export const registerUser = async ({ full_name, email, password }) => {
   };
 };
 
-export const loginUser = async ({ email, password }) => {
+const loginUser = async ({ email, password }) => {
   const user = await userModel.findOne({ email });
 
   if (!user) {
@@ -47,4 +47,9 @@ export const loginUser = async ({ email, password }) => {
       email: user.email,
     },
   };
+};
+
+module.exports = {
+  registerUser,
+  loginUser,
 };
