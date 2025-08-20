@@ -18,7 +18,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/users", userRoutes);
-app.use("/api/recipe", recipeRoutes);
+app.use("/api/recipes", recipeRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
