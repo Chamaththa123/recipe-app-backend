@@ -35,8 +35,8 @@ const removeFavoriteRecipe = async (req, res) => {
     const loggedUserId = req.user.id;
 
     //id valdiaiton
-    if (!id || typeof id !== "string" || recipeId.trim().length === 0) {
-      return res.status(400).json({ message: "Valid id is required" });
+    if (!id) {
+      return res.status(400).json({ message: "Id is required" });
     }
 
     const favorites = await removeFavorite(loggedUserId, id);
