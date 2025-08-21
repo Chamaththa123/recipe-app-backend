@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 
+// Authentication middleware to protect routes
 const authMiddleware = (req, res, next) => {
   // Get token from header
   const authHeader = req.headers.authorization;
