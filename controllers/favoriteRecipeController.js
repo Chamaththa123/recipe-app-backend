@@ -10,12 +10,7 @@ const addFavoriteRecipe = async (req, res) => {
     const recipe = req.body;
     const loggedUserId = req.user.id;
     // Validate the recipe data
-    if (
-      !recipe ||
-      !recipe.idMeal ||
-      !recipe.strMeal ||
-      !recipe.strMealThumb
-    ) {
+    if (!recipe || !recipe.idMeal || !recipe.strMeal || !recipe.strMealThumb) {
       return res.status(400).json({
         message:
           "Invalid recipe data. idMeal, strMeal, and strMealThumb are required.",
@@ -31,15 +26,15 @@ const addFavoriteRecipe = async (req, res) => {
 //delete favourite recipe controller
 const removeFavoriteRecipe = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { recipeId } = req.params;
     const loggedUserId = req.user.id;
 
     //id valdiaiton
-    if (!id) {
+    if (!recipeId) {
       return res.status(400).json({ message: "Id is required" });
     }
 
-    const favorites = await removeFavorite(loggedUserId, id);
+    const favorites = await removeFavorite(loggedUserId, recipeId);
     res.status(200).json(favorites);
   } catch (err) {
     res.status(500).json({ message: err.message });
