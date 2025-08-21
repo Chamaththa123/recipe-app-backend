@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
 const userRoutes = require("./routes/userRoutes.js");
 const recipeRoutes = require("./routes/recipeRoute.js");
+const favoriteRoutes = require("./routes/favoriteRecipeRoute.js");
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(express.json());
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/recipes", recipeRoutes);
+app.use("/api/favorites", favoriteRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

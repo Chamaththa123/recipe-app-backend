@@ -14,6 +14,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  favorites: [
+    {
+      idMeal: String,
+      strMeal: String,
+      strMealThumb: String,
+    },
+  ],
 });
 
 module.exports = mongoose.model("user", userSchema);
