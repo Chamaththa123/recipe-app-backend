@@ -12,7 +12,6 @@ const addFavoriteRecipe = async (req, res) => {
     // Validate the recipe data
     if (
       !recipe ||
-      typeof recipe !== "object" ||
       !recipe.idMeal ||
       !recipe.strMeal ||
       !recipe.strMealThumb
@@ -22,7 +21,6 @@ const addFavoriteRecipe = async (req, res) => {
           "Invalid recipe data. idMeal, strMeal, and strMealThumb are required.",
       });
     }
-
     const favorites = await addFavorite(loggedUserId, recipe);
     res.status(200).json(favorites);
   } catch (err) {
