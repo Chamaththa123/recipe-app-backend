@@ -16,7 +16,7 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "https://recipe-app-backend-production-3ccf.up.railway.app", // Only allow requests from http://localhost:3000
+    origin: "https://recipe-app-backend-production-3ccf.up.railway.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
